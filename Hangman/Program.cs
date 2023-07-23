@@ -6,7 +6,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            List<String> posibleWords = new List<string>();
+            List<String> posibleWords = new List<string>() { "House", "Room", "Kitchen", "Toilet"};
         }
     }
 }
