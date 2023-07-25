@@ -11,29 +11,20 @@ namespace Hangman // Note: actual namespace depends on the project name.
             int computerChoice = randomChoice.Next(0, possibleWords.Count);
             // Console.WriteLine(possibleWords[computerChoice]);
             Console.WriteLine($"Hangman game! type a letter and see if it matches with a word letter!");
-            string userOutput = Console.ReadLine();
+            ConsoleKeyInfo userOutput = Console.ReadKey();
 
             for (int i = 0; i < possibleWords[computerChoice].Length; i++)
             {
-                if (possibleWords[computerChoice].Contains(userOutput))
+                Char userLetter = possibleWords[computerChoice][i];
+                if(userLetter == Console.ReadKey().KeyChar)
                 {
-                    Console.WriteLine("true!");
+                    Console.WriteLine("true!" + possibleWords[computerChoice]);
                 }
                 else
                 {
-                    Console.WriteLine("try again");
+                    Console.WriteLine("false");
                 }
             }
-            
-            /*if(userOutput == possibleWords[computerChoice])
-            {
-                Console.WriteLine("true!");
-            }
-            else
-            {
-                Console.WriteLine("try again");
-            } 
-            */
         }
     }
 }
