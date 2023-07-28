@@ -12,32 +12,34 @@ namespace Hangman // Note: actual namespace depends on the project name.
             int computerChoice = randomChoice.Next(0, possibleWords.Count);
             string randomWord = possibleWords[computerChoice];
             Console.WriteLine($"Hangman game! type a letter and see if it matches with a word letter!");
-            ConsoleKeyInfo userOutput = Console.ReadKey();
-            Char userLetter = userOutput.KeyChar;
             Char line = '-';
 
 
             for (int i= 0; i < randomWord.Length; i++)
             {
                 guessedWord.Add(line);
+                
             }
+            guessedWord.ForEach(Console.Write);
+
+            ConsoleKeyInfo userOutput = Console.ReadKey();
+            Char userLetter = userOutput.KeyChar;
 
             for (int i = 0; i < randomWord.Length; i++)
             {
                 if (userLetter == randomWord[i])
                 {
-                    
-                    guessedWord.ForEach(Console.WriteLine);
-                    Console.ReadKey();
-                    Console.WriteLine(randomWord);
+                    guessedWord[i] = randomWord[i];
+                    guessedWord.ForEach(Console.Write);
                 }
                 else
                 {
-                    Console.WriteLine(line);
-                    Console.ReadKey();
-                    Console.WriteLine(randomWord);
+                    guessedWord[i] = line;
+                    guessedWord.ForEach(Console.Write);
                 }
             }
+            guessedWord.ForEach(Console.Write);
+
         }
     }
 }
