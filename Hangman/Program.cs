@@ -14,35 +14,52 @@ namespace Hangman // Note: actual namespace depends on the project name.
             Console.WriteLine($"Hangman game! type a letter and see if it matches with a word letter!");
             Char line = '-';
             List<char> wordList = new List<char>(); 
+            
             for (int i = 0; i < randomWord.Length; i++)
             {
+                
                 userWord.Add(line);
+            
             }
+            
             userWord.ForEach(Console.Write); //TODO: maybe write with a for loop / foreach loop
-            int attempts = randomWord.Length + 5;
+            int additionalAttempts = 5;
+            int attempts = randomWord.Length + additionalAttempts;
+            
             //foreach (var item in collection)
             //{
-            //}  
+            //}
+            //
+            
             for (int j = attempts; j >= 0 ; j--)
             {
                 ConsoleKeyInfo userChoiceKeyInfo = Console.ReadKey();
+
                 Char userChoiceChar = userChoiceKeyInfo.KeyChar;
+
                 for (int i = 0; i < randomWord.Length; i++)
                 {
+                    
                     if (userChoiceChar == randomWord[i])
                     {
+                        
                         userWord[i] = randomWord[i];
+
                         wordList.Add(userWord[i]);
+
                     }
                     else
                     {
                         userWord[i] = line;
                     }
+
                     //Console.WriteLine(userWord);
                 }
+
                 wordList.ForEach(Console.Write);
             }
-           // Console.ReadKey();
+           
+            // Console.ReadKey();
         }
     }
 }
