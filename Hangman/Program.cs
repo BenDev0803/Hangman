@@ -11,7 +11,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
             List<Char> userWord = new List<Char>();
             int computerChoice = randomChoice.Next(0, words.Count);
             string randomWord = words[computerChoice];
-            Console.WriteLine($"Hangman game! type a letter and see if it matches with a word letter!");
+            Console.WriteLine($"Hangman game! type a character and see if it matches with a word letter!");
             Char line = '-';
             List<char> wordList = new List<char>(); 
             
@@ -51,6 +51,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
                     else
                     {
                         userWord[i] = line;
+                        wordList = userWord;
                     }
 
                     //Console.WriteLine(userWord);
