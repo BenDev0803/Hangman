@@ -7,35 +7,40 @@ namespace Hangman // Note: actual namespace depends on the project name.
         public static readonly Random randomChoice = new Random();
         static void Main(string[] args)
         {
-            List<String> words = new List<String>() { "House" };// , "Room", "Kitchen", "Toilet" };
+            List<String> words = new List<String>() { "House", "Room", "Kitchen", "Garden" };
             List<Char> userWord = new List<Char>();
             int computerChoice = randomChoice.Next(0, words.Count);
             string randomWord = words[computerChoice];
             Console.WriteLine($"Hangman game! type a character and see if it matches with a word letter!");
             Char line = '-';
-            List<char> wordList = new List<char>(); 
-            
+
             for (int i = 0; i < randomWord.Length; i++)
             {
                 
                 userWord.Add(line);
             
             }
-            
+
             userWord.ForEach(Console.Write); //TODO: maybe write with a for loop / foreach loop
             int additionalAttempts = 5;
             int attempts = randomWord.Length + additionalAttempts;
             
-            //foreach (var item in collection)
-            //{
-            //}
-            //
-            
             for (int j = attempts; j >= 0 ; j--)
             {
+
+                string combinedString = string.Join("", userWord.ToArray());
+
                 ConsoleKeyInfo userChoiceKeyInfo = Console.ReadKey();
 
                 Char userChoiceChar = userChoiceKeyInfo.KeyChar;
+                
+                Console.Clear();
+
+                if (randomWord == combinedString)
+                {
+                    Console.WriteLine(" you won!");
+                    break;
+                }
 
                 for (int i = 0; i < randomWord.Length; i++)
                 {
@@ -44,23 +49,14 @@ namespace Hangman // Note: actual namespace depends on the project name.
                     {
                         
                         userWord[i] = randomWord[i];
-
-                        wordList.Add(userWord[i]);
-
+                        
                     }
-                    else
-                    {
-                        userWord[i] = line;
-                        wordList = userWord;
-                    }
-
-                    //Console.WriteLine(userWord);
                 }
 
-                wordList.ForEach(Console.Write);
+                userWord.ForEach(Console.Write);
+                Console.Write($" remaining attempts {j}"); 
+
             }
-           
-            // Console.ReadKey();
         }
     }
 }
