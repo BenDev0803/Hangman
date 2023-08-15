@@ -53,10 +53,8 @@ namespace Hangman // Note: actual namespace depends on the project name.
                         
                     }
                 }
-
                 userWord.ForEach(Console.Write);
-                Console.Write($" remaining attempts {j}"); 
-
+                Console.Write($" remaining attempts {j}");
                 if (j == 0) 
                 {
                     Console.WriteLine(" you lost!");
