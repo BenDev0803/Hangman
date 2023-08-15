@@ -22,7 +22,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
             }
 
             userWord.ForEach(Console.Write); //TODO: maybe write with a for loop / foreach loop
-            int additionalAttempts = 5;
+            const int additionalAttempts = 5;
             int attempts = randomWord.Length + additionalAttempts;
             
             for (int j = attempts; j >= 0 ; j--)
@@ -35,11 +35,6 @@ namespace Hangman // Note: actual namespace depends on the project name.
                 Char userChoiceChar = userChoiceKeyInfo.KeyChar;
                 
                 Console.Clear();
-
-                if (j == 0)
-                {
-                    Console.WriteLine("you lost!");
-                }
 
                 if (randomWord == combinedString)
                 {
@@ -62,7 +57,10 @@ namespace Hangman // Note: actual namespace depends on the project name.
                 userWord.ForEach(Console.Write);
                 Console.Write($" remaining attempts {j}"); 
 
-                
+                if (j == 0) 
+                {
+                    Console.WriteLine(" you lost!");
+                }
             }
         }
     }
