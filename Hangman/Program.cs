@@ -41,7 +41,6 @@ namespace Hangman // Note: actual namespace depends on the project name.
                     Console.WriteLine(" you won!");
                     break;
                 }
-                
 
                 for (int i = 0; i < randomWord.Length; i++)
                 {
@@ -55,10 +54,11 @@ namespace Hangman // Note: actual namespace depends on the project name.
                 }
                 userWord.ForEach(Console.Write);
                 Console.Write($" remaining attempts {j}");
-                if (j == 0) 
-                {
-                    Console.WriteLine(" you lost!");
-                }
+            }
+            
+            if (userWord.Contains('-'))
+            {
+                Console.WriteLine(" you lost!");
             }
         }
     }
