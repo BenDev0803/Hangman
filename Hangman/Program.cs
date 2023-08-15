@@ -7,16 +7,17 @@ namespace Hangman // Note: actual namespace depends on the project name.
         public static readonly Random randomChoice = new Random();
         static void Main(string[] args)
         {
+            const Char LINE = '-';
+            const int ADDITIONAL_ATTEMPTS = 5;
             List<String> words = new List<String>() { "House", "Room", "Kitchen", "Garden" };
             List<Char> userWord = new List<Char>();
             int computerChoice = randomChoice.Next(0, words.Count);
             string randomWord = words[computerChoice];
             Console.WriteLine($"Hangman game! type a character and see if it matches with a word letter!");
-            Char line = '-';
 
             for (int i = 0; i < randomWord.Length; i++)
             {
-                userWord.Add(line);
+                userWord.Add(LINE);
             }
 
             for( int i = 0; i < userWord.Count; i++)
@@ -24,8 +25,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
                 Console.Write(userWord[i]);
             }
 
-            const int additionalAttempts = 5;
-            int attempts = randomWord.Length + additionalAttempts;
+            int attempts = randomWord.Length + ADDITIONAL_ATTEMPTS;
             
             for (int j = attempts; j >= 0 ; j--)
             {
@@ -48,7 +48,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
                     Console.Write(userWord[i]); 
                 }
 
-                if(userWord.Contains('-') == false)
+                if(!userWord.Contains('-'))
                 {
                     Console.WriteLine(" You Won");
                     break;
