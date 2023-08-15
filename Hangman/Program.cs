@@ -14,9 +14,15 @@ namespace Hangman // Note: actual namespace depends on the project name.
             Console.WriteLine($"Hangman game! type a character and see if it matches with a word letter!");
             Char line = '-';
 
-            for (int i = 0; i < randomWord.Length; i++){userWord.Add(line);}
+            for (int i = 0; i < randomWord.Length; i++)
+            {
+                userWord.Add(line);
+            }
 
-            for( int i = 0; i < userWord.Count; i++){Console.Write(userWord[i]);}
+            for( int i = 0; i < userWord.Count; i++)
+            {
+                Console.Write(userWord[i]);
+            }
 
             const int additionalAttempts = 5;
             int attempts = randomWord.Length + additionalAttempts;
@@ -29,11 +35,24 @@ namespace Hangman // Note: actual namespace depends on the project name.
                 
                 Console.Clear();
 
-                for (int i = 0; i < randomWord.Length; i++){if (userChoiceChar == randomWord[i]){userWord[i] = randomWord[i];}}
+                for (int i = 0; i < randomWord.Length; i++)
+                {
+                    if (userChoiceChar == randomWord[i])
+                    {
+                        userWord[i] = randomWord[i];
+                    }
+                }
 
-                for (int i = 0; i < userWord.Count; i++) { Console.Write(userWord[i]); }
+                for (int i = 0; i < userWord.Count; i++) 
+                { 
+                    Console.Write(userWord[i]); 
+                }
 
-                if(userWord.Contains('-') == false){Console.WriteLine(" You Won");break;}
+                if(userWord.Contains('-') == false)
+                {
+                    Console.WriteLine(" You Won");
+                    break;
+                }
 
                 Console.Write($" remaining attempts {j}");
             }
