@@ -23,26 +23,25 @@ namespace Hangman // Note: actual namespace depends on the project name.
             
             for (int j = attempts; j >= 0 ; j--)
             {
-
-                string combinedString = string.Join("", userWord.ToArray());
-
                 ConsoleKeyInfo userChoiceKeyInfo = Console.ReadKey();
 
                 Char userChoiceChar = userChoiceKeyInfo.KeyChar;
                 
                 Console.Clear();
 
-                if (randomWord == combinedString){Console.WriteLine(" you won!");break;}
-
                 for (int i = 0; i < randomWord.Length; i++){if (userChoiceChar == randomWord[i]){userWord[i] = randomWord[i];}}
-                
-                userWord.ForEach(Console.Write);
-                
+
+                for (int i = 0; i < userWord.Count; i++) { Console.Write(userWord[i]); }
+
+                if(userWord.Contains('-') == false){Console.WriteLine(" You Won");break;}
+
                 Console.Write($" remaining attempts {j}");
             }
-            
-            if (userWord.Contains('-')){Console.WriteLine(" you lost!");}
 
+            if (userWord.Contains('-'))
+            {
+                Console.WriteLine(" you lost!");
+            }            
         }
     }
 }
