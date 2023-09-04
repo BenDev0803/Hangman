@@ -7,8 +7,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
         public static readonly Random randomChoice = new Random();
         static void Main(string[] args)
         {
-            bool keepPlaying = true;
-            while (keepPlaying)
+            while (true)
             {
                 const Char LINE = '-';
                 const int ADDITIONAL_ATTEMPTS = 5;
@@ -43,7 +42,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
                         Console.Write(userWord[i]);
                     }
 
-                    if (!userWord.Contains('-'))
+                    if (!userWord.Contains(LINE))
                     {
                         Console.WriteLine(" You Won");
                         break;
@@ -51,13 +50,10 @@ namespace Hangman // Note: actual namespace depends on the project name.
 
                     Console.Write($" remaining attempts {j}");
                 }
-                if (userWord.Contains('-'))
+                if (userWord.Contains(LINE))
                 {
                     Console.WriteLine(" you lost!");
                 }
-
-                if (attempts == 0 || !userWord.Contains('-')|| userWord.Contains('-'))  //game has ended
-                {
                     //ask user
                     Console.WriteLine("would you like to play again? y/n");
                     ConsoleKeyInfo userChoiceAnswer = Console.ReadKey(true);
@@ -66,8 +62,7 @@ namespace Hangman // Note: actual namespace depends on the project name.
                     {
                         break;
                     }
-                    //set keepplying variable                
-                }
+                    //set keepplying variable
             }
         }
     }
